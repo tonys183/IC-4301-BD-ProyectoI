@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios con Observaciones</title>
+    <link rel="stylesheet" href="css/users.css">
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Inicio</a>
+        <div class="nav-links">
+            <a href="users.html" class="nav-link active">Usuarios</a>
+            <a href="taxons.html" class="nav-link">Taxones</a>
+            <a href="observation.html" class="nav-link">Registro</a>
+            <a href="consulta_obs.html" class="nav-link">Observaciones</a>
+            <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+        </div>
+    </div>
+</nav>
+<h1>Observaciones de Usuarios activos</h1>
+
+<table id="users-table">
+    <thead>
+    <tr>
+        <th>Usuario</th>
+        <th>Especie Observada</th>
+        <th>Cantidad de identificaciones</th>
+        <th>Imagen</th>
+    </tr>
+    </thead>
+    <tbody id="users-body">
+    <tr>
+        <td colspan="4" class="loading">Cargando usuarios...</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="js/users.js"></script>
+</body>
+</html>

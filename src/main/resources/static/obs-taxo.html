@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerarquías Taxonómicas</title>
+  <link rel="stylesheet" href="css/obs-taxo.css">
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Inicio</a>
+    <div class="nav-links">
+      <a href="users.html" class="nav-link">Usuarios</a>
+      <a href="taxons.html" class="nav-link">Taxones</a>
+      <a href="observation.html" class="nav-link">Registro</a>
+      <a href="consulta_obs.html" class="nav-link">Observaciones</a>
+      <a href="obs-taxo.html" class="nav-link active">Observaciones-Taxonomías</a>
+    </div>
+  </div>
+</nav>
+
+<h1>Jerarquías Taxonómicas de Observaciones</h1>
+
+<div class="observations-container">
+  <table id="observations-table">
+    <thead>
+    <tr>
+      <th>ID Observación</th>
+      <th>Especie</th>
+      <th>Fecha</th>
+      <th>Jerarquía Taxonómica</th>
+    </tr>
+    </thead>
+    <tbody id="observations-body">
+    <tr>
+      <td colspan="4" class="loading">Cargando observaciones...</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="js/obs-taxo.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Observación</title>
+    <link rel="stylesheet" href="css/observation.css">
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Inicio</a>
+    <div class="nav-links">
+      <a href="users.html" class="nav-link">Usuarios</a>
+      <a href="taxons.html" class="nav-link">Taxones</a>
+      <a href="observation.html" class="nav-link active">Registro</a>
+      <a href="consulta_obs.html" class="nav-link">Observaciones</a>
+      <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+    </div>
+  </div>
+</nav>
+<h1>Registrar Observación</h1>
+
+<form id="observation-form">
+  <label for="user" class="required">Usuario:</label>
+  <select id="user" name="user_id" required>
+    <option value="">-- Seleccione un usuario --</option>
+  </select>
+
+  <div class="taxon-search">
+    <label for="taxon-name" class="required">Especie (nombre científico):</label>
+    <input type="text" id="taxon-name" required autocomplete="off">
+    <div id="suggestions-container" class="suggestions-hidden"></div>
+    <input type="hidden" id="taxon-id">
+  </div>
+
+  <div class="metadata-section">
+    <label for="image-url" class="required">URL de imagen:</label>
+    <input type="url" id="image-url" placeholder="https://ejemplo.com/imagen.jpg" required>
+    <div id="image-preview"></div>
+
+    <label for="photographer" class="required">Fotógrafo:</label>
+    <select id="photographer" required>
+      <option value="">-- Seleccione el fotógrafo --</option>
+    </select>
+
+    <label for="image-owner" class="required">Dueño de la imagen:</label>
+    <select id="image-owner" required>
+      <option value="">-- Seleccione el dueño --</option>
+    </select>
+    <small>Persona/organización que posee los derechos de la imagen</small>
+
+    <label for="image-license" class="required">Licencia:</label>
+    <select id="image-license" required>
+      <option value="CC-BY">Creative Commons Attribution</option>
+      <option value="CC-BY-SA">Creative Commons ShareAlike</option>
+      <option value="CC-BY-NC">Creative Commons Non-Commercial</option>
+      <option value="All rights reserved">Todos los derechos reservados</option>
+    </select>
+  </div>
+
+  <label for="date" class="required">Fecha de observación:</label>
+  <input type="date" id="date" required>
+
+  <div class="coord-container">
+    <div>
+      <label for="latitude" class="required">Latitud:</label>
+      <input type="number" id="latitude" step="any" min="-90" max="90" placeholder="Ej: 19.4326" required>
+    </div>
+    <div>
+      <label for="longitude" class="required" >Longitud:</label>
+      <input type="number" id="longitude" step="any" min="-180" max="180" placeholder="Ej: -99.1332" required>
+    </div>
+  </div>
+
+  <label for="note">Notas adicionales:</label>
+  <textarea id="note" rows="4" placeholder="Agregue cualquier información adicional relevante..."></textarea>
+
+  <button class="btnObsForm" type="submit">Guardar Observación</button>
+</form>
+<script src="js/observation.js"></script>
+</body>
+</html>

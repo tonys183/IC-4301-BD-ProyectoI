@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Taxones</title>
+    <link rel="stylesheet" href="css/taxons.css">
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Inicio</a>
+        <div class="nav-links">
+            <a href="users.html" class="nav-link">Usuarios</a>
+            <a href="taxons.html" class="nav-link active">Taxones</a>
+            <a href="observation.html" class="nav-link">Registro</a>
+            <a href="consulta_obs.html" class="nav-link">Observaciones</a>
+            <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <h1>Consultar Taxonomía</h1>
+
+    <div class="carousel">
+        <div class="carousel-images"></div>
+        <div class="carousel-nav-left"></div>
+        <div class="carousel-nav-right"></div>
+    </div>
+
+    <div class="taxon-search">
+        <label for="taxon-name" class="required">Nombre científico de la especie:</label>
+        <input type="text" id="taxon-name" required autocomplete="off" placeholder="Ej. Panthera leo">
+        <div id="suggestions-container" class="suggestions-hidden"></div>
+        <input type="hidden" id="taxon-id">
+    </div>
+
+    <div id="taxon-hierarchy">
+        <h3>Jerarquía Taxonómica</h3>
+        <ul id="hierarchy-list"></ul>
+    </div>
+</div>
+
+<script src="js/carousel.js"></script>
+<script src="js/taxons.js"></script>
+</body>
+</html>

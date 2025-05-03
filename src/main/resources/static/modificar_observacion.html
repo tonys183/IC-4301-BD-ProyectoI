@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Observación</title>
+    <link rel="stylesheet" href="css/modificar_observacion.css">
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Inicio</a>
+        <div class="nav-links">
+            <a href="users.html" class="nav-link">Usuarios</a>
+            <a href="taxons.html" class="nav-link">Taxones</a>
+            <a href="observation.html" class="nav-link">Registro</a>
+            <a href="consulta_obs.html" class="nav-link active">Observaciones</a>
+            <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <h1>Modificar Observación</h1>
+
+    <div class="edit-form">
+        <div id="loading-message" class="loading">
+            <div class="spinner"></div>
+            <p>Cargando datos de la observación...</p>
+        </div>
+
+        <div id="form-content" style="display: none;">
+            <div class="form-group">
+                <label for="taxon-name" class="required">Especie (nombre científico):</label>
+                <div class="taxon-search-container">
+                    <input type="text" id="taxon-name" class="form-control" required autocomplete="off">
+                    <div id="taxon-suggestions" class="suggestions-container"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="image-url">URL de imagen:</label>
+                <input type="url" id="image-url" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" disabled>
+                <input type="hidden" id="image-id">
+                <div id="image-preview"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="date" class="required">Fecha de observación:</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <div class="coord-container">
+                <div class="form-group">
+                    <label for="latitude" class="required">Latitud:</label>
+                    <input type="number" id="latitude" class="form-control" step="any" min="-90" max="90" placeholder="Ej: 19.4326" required>
+                </div>
+                <div class="form-group">
+                    <label for="longitude" class="required">Longitud:</label>
+                    <input type="number" id="longitude" class="form-control" step="any" min="-180" max="180" placeholder="Ej: -99.1332" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Notas adicionales:</label>
+                <textarea id="note" rows="4" class="form-control" placeholder="Agregue cualquier información adicional relevante..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="user" class="required">Usuario:</label>
+                <select id="user" class="form-control" required>
+                    <option value="">-- Seleccione un usuario --</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button id="save-btn" class="btn">Guardar Cambios</button>
+                <button id="delete-btn" class="btn btn-danger">Eliminar</button>
+                <button id="cancel-btn" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/modificar_observacion.js"></script>
+</body>
+</html>

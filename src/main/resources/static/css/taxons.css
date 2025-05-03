@@ -1,0 +1,318 @@
+:root {
+    --bg-dark: #171817;
+    --nav-bg: #1a2a1a;
+    --primary: #3a7d44;
+    --primary-hover: #2d6135;
+    --accent: #4daa57;
+    --text-light: #e8f3e9;
+    --text-muted: #a5b5a7;
+    --card-bg: #131313;
+    --card-border: #304f30;
+    --input-bg: #232323;
+    --suggestion-bg: #1e2e1e;
+    --suggestion-hover: #2d3e2d;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+}
+
+nav {
+    background-color: var(--nav-bg);
+    padding: 0;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav-logo {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: white;
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.main-content {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.taxon-search {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.taxon-search label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.taxon-search input {
+    width: 97%;
+    padding: 12px 15px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.taxon-search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(77, 170, 87, 0.3);
+}
+
+#suggestions-container {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: var(--suggestion-bg);
+    border: 1px solid var(--card-border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--card-border);
+    transition: all 0.2s ease;
+}
+
+.suggestion-item:hover {
+    background-color: var(--suggestion-hover);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestions-hidden {
+    display: none;
+}
+
+#taxon-hierarchy {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border);
+    display: none;
+    margin-top: 20px;
+}
+
+#taxon-hierarchy h3 {
+    color: var(--accent);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 10px;
+}
+
+#hierarchy-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#hierarchy-list li {
+    padding: 15px 15px;
+    margin-bottom: 8px;
+    background-color: rgba(76, 175, 80, 0.05);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#hierarchy-list li:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+    transform: translateX(5px);
+}
+
+.rank-label {
+    font-weight: bold;
+    color: var(--accent);
+    margin-right: 8px;
+}
+
+.loading {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.error {
+    color: #ff6b6b;
+    background-color: rgba(255, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+    text-align: center;
+    border-left: 4px solid #ff6b6b;
+}
+
+small {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#hierarchy-list li {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-content {
+        padding: 0 15px;
+    }
+
+    #taxon-hierarchy {
+        padding: 20px;
+    }
+
+    .taxon-search input {
+        padding: 10px 12px;
+    }
+}
+
+.carousel {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    margin: 20px 0 30px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-images img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-images img.active {
+    opacity: 1;
+}
+
+.carousel-nav-left,
+.carousel-nav-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carousel-nav-left {
+    left: 0;
+}
+
+.carousel-nav-right {
+    right: 0;
+}
+
+.carousel:hover .carousel-nav-left,
+.carousel:hover .carousel-nav-right {
+    opacity: 1;
+}
+
+.carousel-nav-left:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+}
+
+.carousel-nav-right:hover {
+    background: linear-gradient(to left, rgba(0,0,0,0.3), transparent);
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Observaciones</title>
+  <link rel="stylesheet" href="css/consulta_obs.css">
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Inicio</a>
+    <div class="nav-links">
+      <a href="users.html" class="nav-link">Usuarios</a>
+      <a href="taxons.html" class="nav-link">Taxones</a>
+      <a href="observation.html" class="nav-link">Registro</a>
+      <a href="consulta_obs.html" class="nav-link active">Observaciones</a>
+      <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+    </div>
+  </div>
+</nav>
+
+<div class="main-content">
+  <h1>Consulta de Observaciones</h1>
+
+  <div id="loading-state" class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando observaciones...</p>
+  </div>
+
+  <div id="observations-grid" class="observations-grid">
+  </div>
+
+  <div id="error-state" class="error-state">
+    <p>Error al cargar las observaciones</p>
+    <button id="retry-button" class="retry-button">Reintentar</button>
+  </div>
+</div>
+
+<script src="js/consulta_obs.js"></script>
+</body>
+</html>

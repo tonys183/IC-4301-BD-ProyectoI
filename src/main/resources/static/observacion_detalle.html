@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Observación</title>
+    <link rel="stylesheet" href="css/observacion_detalle.css">
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Inicio</a>
+        <div class="nav-links">
+            <a href="users.html" class="nav-link">Usuarios</a>
+            <a href="taxons.html" class="nav-link">Taxones</a>
+            <a href="observation.html" class="nav-link">Registro</a>
+            <a href="consulta_obs.html" class="nav-link active">Observaciones</a>
+            <a href="obs-taxo.html" class="nav-link">Observaciones-Taxonomías</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <h1>Detalle de Observación</h1>
+
+    <div class="observation-container">
+        <div class="observation-card">
+            <div id="observation-details">
+                <div class="loading">Cargando detalles de la observación...</div>
+            </div>
+            <div class="edit-button-container">
+                <button id="edit-observation-btn" class="btn btn-edit">Modificar Observación</button>
+            </div>
+        </div>
+
+        <div class="identifications-section">
+            <h2>Identificaciones</h2>
+            <div id="identifications-list">
+                <div class="loading">Cargando identificaciones...</div>
+            </div>
+
+            <div class="id-form">
+                <h3>Agregar nueva identificación</h3>
+
+                <div class="form-group">
+                    <label for="user-select">Usuario:</label>
+                    <select id="user-select" class="form-control">
+                        <option value="">-- Seleccione usuario --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="new-identification">Nombre científico:</label>
+                    <div class="taxon-search-container">
+                        <input type="text" id="new-identification" placeholder="Nombre científico..." class="form-control" autocomplete="off">
+                        <div id="identification-suggestions" class="suggestions-container"></div>
+                    </div>
+                </div>
+
+                <button id="add-identification-btn" class="btn btn-primary">Agregar Identificación</button>
+                <button id="update-identification-btn" class="btn btn-primary" style="display: none;">Actualizar</button>
+                <button id="cancel-edit-btn" class="btn" style="display: none;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/observacion_detalle.js"></script>
+</body>
+</html>
