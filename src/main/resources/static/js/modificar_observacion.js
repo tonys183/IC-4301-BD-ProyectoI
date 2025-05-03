@@ -82,12 +82,7 @@ async function loadUsers() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                query: `
-                    SELECT user_id, first_name, last_name 
-                    FROM biodiversidad.user
-                    ORDER BY first_name
-                `
-            })
+                query: `SELECT user_id, first_name, last_name FROM biodiversidad.user`})
         });
 
         if (!response.ok) throw new Error(await response.text());
@@ -115,7 +110,7 @@ async function loadAllTaxons() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                query: "SELECT taxon_id, taxon_name, rank FROM biodiversidad.taxon where rank = 'species' ORDER BY taxon_name"
+                query: "SELECT taxon_id, taxon_name, rank FROM biodiversidad.taxon ORDER BY taxon_name"
             })
         });
 
@@ -133,6 +128,13 @@ function updateImagePreview() {
     } else { preview.innerHTML = ''; }
 }
 
+function validDate(dateString) {
+    const inputDate = new Date(dateString);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return inputDate <= today;
+}
+
 async function saveChanges(observationId) {
     const taxonName = document.getElementById('taxon-name').value.trim();
     const date = document.getElementById('date').value;
@@ -147,7 +149,35 @@ async function saveChanges(observationId) {
         return;
     }
 
+    if (!validDate(date)) {
+        alert("Fecha inválida");
+        document.getElementById("date").focus();
+        return;
+    }
+
+    if (latitude < -90 || latitude > 90) {
+        alert('La latitud debe estar entre -90 y 90 grados.');
+        latitude.focus();
+        return
+    }
+
+    if (longitude < -180 || longitude > 180) {
+        alert('La longitud debe estar entre -180 y 180 grados.');
+        longitude.focus();
+        return
+    }
+
+    const [year, month, day] = date.split('-');
+    const dateObj = new Date(year, month - 1, parseInt(day, 10));
+    dateObj.setDate(dateObj.getDate() + 1);
+    const dateFix = {
+        year: dateObj.getFullYear(),
+        month: dateObj.getMonth() + 1,
+        day: dateObj.getDate()
+    };
+
     try {
+        const date = `${dateFix.year}-${String(dateFix.month).padStart(2, '0')}-${String(dateFix.day).padStart(2, '0')}`
         const taxonResponse = await fetch('http://localhost:8080/api/query', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -336,8 +366,7 @@ function setupTaxonAutocomplete() {
 
         timeoutId = setTimeout(() => {
             const filtered = allTaxons.filter(taxon =>
-                taxon.taxon_name.toLowerCase().includes(query.toLowerCase()) ||
-                (taxon.common_name && taxon.common_name.toLowerCase().includes(query.toLowerCase()))
+                taxon.taxon_name.toLowerCase().includes(query.toLowerCase())
             );
 
             if (filtered.length > 0) {

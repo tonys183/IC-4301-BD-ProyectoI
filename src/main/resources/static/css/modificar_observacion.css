@@ -13,6 +13,8 @@
     --danger-hover: #c0392b;
     --secondary: #6c757d;
     --secondary-hover: #5a6268;
+    --suggestion-bg: #1e2e1e;
+    --suggestion-hover: #2d3e2d;
 }
 
 body {
@@ -22,6 +24,10 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     min-height: 100vh;
+}
+
+html {
+    overflow-y: scroll;
 }
 
 .main-nav {
@@ -281,30 +287,27 @@ label {
 }
 
 .suggestions-container {
-    position: absolute;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-top: none;
-    border-radius: 0 0 6px 6px;
-    z-index: 10;
-    box-shadow: var(--card-shadow);
-    display: none;
+    border-radius: 0 0 5px 5px;
+    background-color: #1a1a1a;
+    border-left: 1px solid var(--card-border);
+    border-right: 1px solid var(--card-border);
 }
 
 .suggestion-item {
-    padding: 10px 15px;
+    padding: 12px 15px;
     cursor: pointer;
     border-bottom: 1px solid var(--card-border);
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .suggestion-item:hover {
-    background-color: rgba(76, 175, 80, 0.1);
+    background-color: var(--suggestion-hover);
 }
 
 .suggestion-item:last-child {
     border-bottom: none;
+}
+
+.suggestions-hidden {
+    display: none;
 }

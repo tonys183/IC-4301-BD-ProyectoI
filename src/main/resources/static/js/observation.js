@@ -79,8 +79,7 @@ function setupTaxonAutocomplete() {
 
         searchTimeout = setTimeout(() => {
             const filtered = allTaxons.filter(taxon =>
-                taxon.taxon_name.toLowerCase().includes(query.toLowerCase()) &&
-                taxon.rank === "species"
+                taxon.taxon_name.toLowerCase().includes(query.toLowerCase())
             );
 
             if (filtered.length > 0) {
@@ -145,12 +144,26 @@ async function createImage(taxonId, imageData) {
     return await res.json();
 }
 
+function validDate(dateString) {
+    const inputDate = new Date(dateString);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return inputDate <= today;
+}
+
 async function handleSubmit(e) {
     e.preventDefault();
     try {
         if (!document.getElementById("taxon-id").value) {
             alert("Por favor seleccione un taxón válido.");
             document.getElementById("taxon-name").focus();
+            return;
+        }
+
+        const dateInput = document.getElementById("date").value;
+        if (!validDate(dateInput)) {
+            alert("Fecha inválida");
+            document.getElementById("date").focus();
             return;
         }
 

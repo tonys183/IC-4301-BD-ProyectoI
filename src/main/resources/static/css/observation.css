@@ -10,6 +10,8 @@
     --card-border: #2a3a2a;
     --input-bg: #232323;
     --error: #e74c3c;
+    --suggestion-bg: #1e2e1e;
+    --suggestion-hover: #2d3e2d;
 }
 
 body {
@@ -32,6 +34,10 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+html {
+    overflow-y: scroll;
 }
 
 .nav-container {
@@ -167,14 +173,10 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#taxon-name {
-    margin-bottom: 10px;
-}
-
 .metadata-section {
     background-color: rgba(76, 175, 80, 0.05);
     padding: 15px;
-    margin: 15px 0;
+    margin: 25px 0;
     border-radius: 8px;
     border-left: 4px solid var(--accent);
 }
@@ -238,28 +240,30 @@ button[onclick="checkTaxon()"]:hover {
     }
 }
 
-#suggestions-container {
-    position: absolute;
-    background: #1e1e1e;
-    border: 1px solid #2a3a2a;
-    border-radius: 0 0 4px 4px;
-    width: calc(100% - 30px);
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 100;
-    display: none;
+.suggestions-container {
+    border-radius: 0 0 5px 5px;
+    background-color: #1a1a1a;
+    border-left: 1px solid var(--card-border);
+    border-right: 1px solid var(--card-border);
 }
 
 .suggestion-item {
-    padding: 8px 12px;
+    padding: 12px 15px;
     cursor: pointer;
     border-bottom: 1px solid var(--card-border);
     transition: all 0.2s ease;
 }
 
 .suggestion-item:hover {
-    border-radius: 3px;
-    background-color: rgba(76, 175, 80, 0.1);
+    background-color: var(--suggestion-hover);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestions-hidden {
+    display: none;
 }
 
 @keyframes fadeIn {

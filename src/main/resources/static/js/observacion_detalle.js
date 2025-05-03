@@ -402,7 +402,8 @@ function setupIdentificationAutocomplete() {
 
         timeoutId = setTimeout(() => {
             const filtered = allTaxons.filter(taxon =>
-                taxon.taxon_name.toLowerCase().includes(query.toLowerCase())
+                taxon.taxon_name.toLowerCase().includes(query.toLowerCase()) &&
+                taxon.rank === "species"
             );
 
             if (filtered.length > 0) {
